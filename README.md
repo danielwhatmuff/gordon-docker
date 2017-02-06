@@ -8,12 +8,12 @@ Docker image for [Gordon](https://github.com/jorgebastida/gordon), based on the 
 $ git clone git@github.com:danielwhatmuff/gordon-docker.git && cd gordon-docker && docker build -t gordon .
 $ alias gordonshell='docker run -ti -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION -v $(pwd):/var/task  --rm gordon bash'
 $ alias >> ~/.bash_profile
-$ cd yourzappaproject
-$ zappashell
-zappashell> source yourvirtualenv/bin/activate
-zappashell> pip install -r requirements.txt
-zappashell> zappa deploy
+$ cd yourgordonproject
+$ gordonshell
+gordonshell> source yourvirtualenv/bin/activate
+gordonshell> pip install -r requirements.txt
+gordonshell> gordon build && gordon apply
 ```
 
 # Known Issues
-* On Mac - if you leave the Docker daemon running for too long, you will get time drift and zappa commands will fail with the below types of errors (so will AWS CLI commands) - to fix, just restart the daemon
+* On Mac - if you leave the Docker daemon running for too long, you will get time drift and gordon commands may fail (so will AWS CLI commands) - to fix, just restart the daemon
